@@ -1,0 +1,6 @@
+repo.name: mynewt_frdm-k64
+repo.versions:
+    "0.0.0": "mynewt_frdm-k64_0_0_0_tag"
+    "0.0.1": "develop"
+    "0-latest": "0.0.0"
+    "0-dev": "0.0.1"
