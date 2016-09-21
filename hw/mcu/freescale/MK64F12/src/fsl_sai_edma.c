@@ -28,7 +28,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "fsl_sai_edma.h"
+#include "mcu/fsl_sai_edma.h"
 
 /*******************************************************************************
  * Definitations

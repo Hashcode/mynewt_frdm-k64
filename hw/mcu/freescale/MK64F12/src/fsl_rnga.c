@@ -28,7 +28,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "fsl_rnga.h"
+#include "mcu/fsl_rnga.h"
 
 #if defined(FSL_FEATURE_SOC_RNG_COUNT) && FSL_FEATURE_SOC_RNG_COUNT
 

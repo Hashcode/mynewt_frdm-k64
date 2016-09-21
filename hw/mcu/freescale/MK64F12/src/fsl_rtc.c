@@ -28,7 +28,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "fsl_rtc.h"
+#include "mcu/fsl_rtc.h"
 
 /*******************************************************************************
  * Definitions

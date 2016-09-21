@@ -28,7 +28,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "fsl_cmp.h"
+#include "mcu/fsl_cmp.h"
 
 /*******************************************************************************
  * Prototypes

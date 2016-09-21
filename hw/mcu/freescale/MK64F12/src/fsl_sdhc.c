@@ -34,7 +34,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "fsl_sdhc.h"
+#include "mcu/fsl_sdhc.h"
 
 /*******************************************************************************
  * Definitions

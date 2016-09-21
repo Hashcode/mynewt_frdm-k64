@@ -64,18 +64,18 @@
 #include <stdio.h>
 #endif
 #include <math.h>
-#include "fsl_debug_console.h"
+#include "mcu/fsl_debug_console.h"
 
 #if defined(FSL_FEATURE_SOC_UART_COUNT) && (FSL_FEATURE_SOC_UART_COUNT > 0)
-#include "fsl_uart.h"
+#include "mcu/fsl_uart.h"
 #endif /* FSL_FEATURE_SOC_UART_COUNT */
 
 #if defined(FSL_FEATURE_SOC_LPSCI_COUNT) && (FSL_FEATURE_SOC_LPSCI_COUNT > 0)
-#include "fsl_lpsci.h"
+#include "mcu/fsl_lpsci.h"
 #endif /* FSL_FEATURE_SOC_LPSCI_COUNT */
 
 #if defined(FSL_FEATURE_SOC_LPUART_COUNT) && (FSL_FEATURE_SOC_LPUART_COUNT > 0)
-#include "fsl_lpuart.h"
+#include "mcu/fsl_lpuart.h"
 #endif /* FSL_FEATURE_SOC_LPUART_COUNT */
 
 /*! @brief Keil: suppress ellipsis warning in va_arg usage below. */

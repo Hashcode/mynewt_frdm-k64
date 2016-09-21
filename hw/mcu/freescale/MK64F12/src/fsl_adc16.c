@@ -28,7 +28,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "fsl_adc16.h"
+#include "mcu/fsl_adc16.h"
 
 /*******************************************************************************
  * Prototypes

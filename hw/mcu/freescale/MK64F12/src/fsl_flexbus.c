@@ -28,7 +28,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "fsl_flexbus.h"
+#include "mcu/fsl_flexbus.h"
 
 /*******************************************************************************
  * Prototypes

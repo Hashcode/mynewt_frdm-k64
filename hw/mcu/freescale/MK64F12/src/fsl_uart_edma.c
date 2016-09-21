@@ -28,8 +28,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "fsl_uart_edma.h"
-#include "fsl_dmamux.h"
+#include "mcu/fsl_uart_edma.h"
+#include "mcu/fsl_dmamux.h"
 
 /*******************************************************************************
  * Definitions

@@ -28,7 +28,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "fsl_smc.h"
+#include "mcu/fsl_smc.h"
 
 #if (defined(FSL_FEATURE_SMC_HAS_PARAM) && FSL_FEATURE_SMC_HAS_PARAM)
 void SMC_GetParam(SMC_Type *base, smc_param_t *param)

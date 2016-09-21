@@ -28,7 +28,7 @@
 * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include "fsl_dspi_edma.h"
+#include "mcu/fsl_dspi_edma.h"
 
 /***********************************************************************************************************************
 * Definitons

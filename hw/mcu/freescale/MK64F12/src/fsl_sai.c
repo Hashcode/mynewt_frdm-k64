@@ -28,7 +28,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "fsl_sai.h"
+#include "mcu/fsl_sai.h"
 
 /*******************************************************************************
  * Definitations

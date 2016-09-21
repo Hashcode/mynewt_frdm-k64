@@ -28,7 +28,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "fsl_pdb.h"
+#include "mcu/fsl_pdb.h"
 
 /*******************************************************************************
  * Prototypes

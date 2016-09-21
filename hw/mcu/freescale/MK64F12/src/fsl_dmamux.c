@@ -28,7 +28,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "fsl_dmamux.h"
+#include "mcu/fsl_dmamux.h"
 
 /*******************************************************************************
  * Definitions

@@ -106,7 +106,7 @@
  */
 
 #include <stdint.h>
-#include "fsl_device_registers.h"
+#include "mcu/fsl_device_registers.h"
 
 
 
