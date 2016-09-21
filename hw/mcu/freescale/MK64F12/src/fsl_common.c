@@ -41,15 +41,6 @@ void __aeabi_assert(const char *failedExpr, const char *file, int line)
         __asm("bkpt #0");
     }
 }
-#elif(defined(__GNUC__))
-void __assert_func(const char *file, int line, const char *func, const char *failedExpr)
-{
-    PRINTF("ASSERT ERROR \" %s \": file \"%s\" Line \"%d\" function name \"%s\" \n", failedExpr, file, line, func);
-    for (;;)
-    {
-        __asm("bkpt #0");
-    }
-}
 #endif /* (defined(__CC_ARM)) ||  (defined (__ICCARM__)) */
 #endif /* NDEBUG */
 
