@@ -12717,6 +12717,11 @@ typedef struct {
  * @}
  */ /* end of group SDK_Compatibility_Symbols */
 
+#ifdef DEBUG
+#define DEBUG_PRINTF PRINTF
+#else
+#define DEBUG_PRINTF printf
+#endif
 
 #endif  /* _MK64F12_H_ */
 
