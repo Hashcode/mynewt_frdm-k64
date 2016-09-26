@@ -17,6 +17,7 @@
  * under the License.
  */
 #include <sys/types.h>
+#include <stdio.h>
 #include <hal/flash_map.h>
 
 #include "mcu/fsl_device_registers.h"
@@ -24,8 +25,21 @@
 #include "mcu/fsl_common.h"
 #include "mcu/fsl_clock.h"
 #include "mcu/fsl_port.h"
+#include "mcu/fsl_debug_console.h"
 
 #include "clock_config.h"
+
+/* The UART to use for debug messages. */
+#define BOARD_DEBUG_UART_TYPE DEBUG_CONSOLE_DEVICE_TYPE_UART
+#define BOARD_DEBUG_UART_BASEADDR (uint32_t) UART0
+#define BOARD_DEBUG_UART_CLKSRC SYS_CLK
+#define BOARD_DEBUG_UART_CLK_FREQ CLOCK_GetCoreSysClkFreq()
+#define BOARD_UART_IRQ UART0_RX_TX_IRQn
+#define BOARD_UART_IRQ_HANDLER UART0_RX_TX_IRQHandler
+
+#ifndef BOARD_DEBUG_UART_BAUDRATE
+#define BOARD_DEBUG_UART_BAUDRATE 115200
+#endif /* BOARD_DEBUG_UART_BAUDRATE */
 
 void *_sbrk(int incr);
 void _close(int fd);
@@ -88,6 +102,13 @@ void BOARD_InitPins(void)
     PORT_SetPinMux(PORTB, 22U, kPORT_MuxAsGpio);
 }
 
+/* Initialize debug console. */
+void BOARD_InitDebugConsole(void)
+{
+    uint32_t uartClkSrcFreq = BOARD_DEBUG_UART_CLK_FREQ;
+    DbgConsole_Init(BOARD_DEBUG_UART_BASEADDR, BOARD_DEBUG_UART_BAUDRATE, BOARD_DEBUG_UART_TYPE, uartClkSrcFreq);
+}
+
 extern void BOARD_BootClockRUN(void);
 
 void
@@ -98,6 +119,9 @@ os_bsp_init(void)
 
     BOARD_InitPins();
     BOARD_BootClockRUN();
+    BOARD_InitDebugConsole();
+
+    DEBUG_PRINTF("%s: POST BOARD_InitDebugConsole\r\n", __func__);
 
     /*
      * XXX these references are here to keep the functions in for libc to find.
@@ -107,4 +131,5 @@ os_bsp_init(void)
 
     flash_area_init(bsp_flash_areas,
       sizeof(bsp_flash_areas) / sizeof(bsp_flash_areas[0]));
+    DEBUG_PRINTF("%s: EXIT\r\n", __func__);
 }
