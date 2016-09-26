@@ -23,7 +23,11 @@
 extern "C" {
 #endif
 
-/* TODO */
+/* UART ports */
+#define UART_CNT        1
+#define CONSOLE_UART    0
+
+#define LED_BLINK_PIN   54
 
 /* This defines the maximum NFFS areas (block) are in the BSPs NFS file
  * system space.  This in conjunction with flash map determines how
