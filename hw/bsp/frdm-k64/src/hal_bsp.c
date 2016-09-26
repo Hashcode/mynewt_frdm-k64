@@ -18,37 +18,10 @@
  */
 #include <stddef.h>
 
-#include "hal/hal_gpio.h"
 #include "hal/hal_flash_int.h"
-#if 0
-#include "mcu/stm32f30x.h"
-#include "mcu/stm32f30x_rcc.h"
-#include "mcu/stm32f30x_gpio.h"
-#include "mcu/stm32f3_bsp.h"
-#endif
 #include "bsp/bsp.h"
 
-#if 0
-static const struct stm32f3_uart_cfg uart_cfg[UART_CNT] = {
-    [0] = {
-        .suc_uart = USART1,
-        .suc_rcc_cmd = RCC_APB2PeriphClockCmd,
-        .suc_rcc_dev = RCC_APB2Periph_USART1,
-        .suc_pin_tx = 9,
-        .suc_pin_rx = 10,
-        .suc_pin_rts = 12,
-        .suc_pin_cts = 11,
-        .suc_pin_af = GPIO_AF_7,
-        .suc_irqn = USART1_IRQn
-    }
-};
-
-const struct stm32f3_uart_cfg *
-bsp_uart_config(int port)
-{
-    assert(port < UART_CNT);
-    return &uart_cfg[port];
-}
+#include "mcu/frdm-k64f_bsp.h"
 
 const struct hal_flash *
 bsp_flash_dev(uint8_t id)
@@ -59,6 +32,5 @@ bsp_flash_dev(uint8_t id)
     if (id != 0) {
         return NULL;
     }
-    return &stm32f3_flash_dev;
+    return &mk64f12_flash_dev;
 }
-#endif
