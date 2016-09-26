@@ -29,6 +29,7 @@ if [ $# -lt 2 ]; then
     exit 1
 fi
 
+CFGPATH=$1
 BASENAME=$2
 IS_BOOTLOADER=0
 
@@ -43,14 +44,14 @@ while [ $# -gt 0 ]; do
 done
 
 if [ $IS_BOOTLOADER -eq 1 ]; then
-    FLASH_OFFSET=0x08000000
+    FLASH_OFFSET=0x00000000
     FILE_NAME=$BASENAME.elf.bin
 else
-    FLASH_OFFSET=0x08009000
-    FILE_NAME=$BASENAME.img
+    FLASH_OFFSET=0x0000A000
+    FILE_NAME=$BASENAME.elf.bin
 fi
 
 echo "Downloading" $FILE_NAME "to" $FLASH_OFFSET
 
-openocd -f board/frdm-k64.cfg -c init -c "reset halt" -c "flash write_image erase $FILE_NAME $FLASH_OFFSET" -c "reset run" -c shutdown
+openocd -f $CFGPATH/frdm-k64.cfg -c init -c "reset halt" -c "flash write_image erase $FILE_NAME $FLASH_OFFSET" -c "reset run" -c shutdown
 
