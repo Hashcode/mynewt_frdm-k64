@@ -28,8 +28,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "fsl_common.h"
-#include "fsl_smc.h"
+#include "mcu/fsl_common.h"
+#include "mcu/fsl_smc.h"
 #include "clock_config.h"
 
 /*******************************************************************************
