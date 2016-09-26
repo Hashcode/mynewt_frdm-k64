@@ -19,6 +19,8 @@
 #include <sys/types.h>
 #include <hal/flash_map.h>
 
+#include "mcu/fsl_device_registers.h"
+
 void *_sbrk(int incr);
 void _close(int fd);
 
@@ -59,9 +61,22 @@ bsp_imgr_current_slot(void)
     return FLASH_AREA_IMAGE_0;
 }
 
+static void init_hardware(void)
+{
+    // Disable the MPU otherwise USB cannot access the bus
+    MPU->CESR = 0;
+
+    // Enable all the ports
+    SIM->SCGC5 |= (SIM_SCGC5_PORTA_MASK | SIM_SCGC5_PORTB_MASK | SIM_SCGC5_PORTC_MASK | SIM_SCGC5_PORTD_MASK |
+                   SIM_SCGC5_PORTE_MASK);
+}
+
 void
 os_bsp_init(void)
 {
+    // Init pinmux and other hardware setup.
+    init_hardware();
+
     /*
      * XXX these references are here to keep the functions in for libc to find.
      */
