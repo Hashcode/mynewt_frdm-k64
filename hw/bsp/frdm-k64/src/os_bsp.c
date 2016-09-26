@@ -20,6 +20,9 @@
 #include <hal/flash_map.h>
 
 #include "mcu/fsl_device_registers.h"
+#include "mcu/frdm-k64f_bsp.h"
+#include "mcu/fsl_common.h"
+#include "mcu/fsl_port.h"
 
 void *_sbrk(int incr);
 void _close(int fd);
@@ -71,11 +74,24 @@ static void init_hardware(void)
                    SIM_SCGC5_PORTE_MASK);
 }
 
+void BOARD_InitPins(void)
+{
+    /* Debug uart port mux config */
+    CLOCK_EnableClock(kCLOCK_PortD);
+    PORT_SetPinMux(PORTD, 6U, kPORT_MuxAlt5);
+    PORT_SetPinMux(PORTD, 7U, kPORT_MuxAlt3);
+
+    /* Led pin mux Configuration */
+    PORT_SetPinMux(PORTB, 22U, kPORT_MuxAsGpio);
+}
+
 void
 os_bsp_init(void)
 {
     // Init pinmux and other hardware setup.
     init_hardware();
+
+    BOARD_InitPins();
 
     /*
      * XXX these references are here to keep the functions in for libc to find.
