@@ -19,7 +19,7 @@
 
 pkg.name: "hw/bsp/frdm-k64"
 pkg.type: bsp
-pkg.repository: https://git.linaro.org/people/michael.scott/mynewt_frdm-k64
+pkg.repository: https://github.com/Hashcode/mynewt_frdm-k64
 
 pkg.arch: cortex_m4
 pkg.compiler: "@apache-mynewt-core/compiler/arm-none-eabi-m4"
