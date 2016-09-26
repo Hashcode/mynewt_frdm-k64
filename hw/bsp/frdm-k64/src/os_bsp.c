@@ -28,27 +28,27 @@ void _close(int fd);
 static struct flash_area bsp_flash_areas[] = {
     [FLASH_AREA_BOOTLOADER] = {
         .fa_flash_id = 0,       /* internal flash */
-        .fa_off = 0x08000000,   /* beginning */
-        .fa_size = (36 * 1024)
+        .fa_off = 0x00000000,   /* beginning */
+        .fa_size = (40 * 1024)
     },
     [FLASH_AREA_IMAGE_0] = {
         .fa_flash_id = 0,
-        .fa_off = 0x08009000,
-        .fa_size = (102 * 1024)
+        .fa_off = 0x0000A000,
+        .fa_size = (484 * 1024)
     },
     [FLASH_AREA_IMAGE_1] = {
         .fa_flash_id = 0,
-        .fa_off = 0x08022800,
-        .fa_size = (102 * 1024)
+        .fa_off = 0x00083000,
+        .fa_size = (484 * 1024)
     },
     [FLASH_AREA_IMAGE_SCRATCH] = {
         .fa_flash_id = 0,
-        .fa_off = 0x0803c000,
+        .fa_off = 0x000fc000,
         .fa_size = (8 * 1024)
     },
     [FLASH_AREA_NFFS] = {
         .fa_flash_id = 0,
-        .fa_off = 0x0803e000,
+        .fa_off = 0x000fe000,
         .fa_size = (8 * 1024)
     }
 };
@@ -67,6 +67,7 @@ os_bsp_init(void)
      */
     _sbrk(0);
     _close(0);
+
     flash_area_init(bsp_flash_areas,
       sizeof(bsp_flash_areas) / sizeof(bsp_flash_areas[0]));
 }
