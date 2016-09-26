@@ -31,6 +31,12 @@
 #define NVIC_NUM_VECTORS      (16 + 101)   // CORE + MCU Peripherals
 #define NVIC_USER_IRQ_OFFSET  16
 
+/*
+ * include board definition file which includes: cmsis-core/core_cm4.h
+ * this fixes missing CORTEX_M* definition in cmsis_nvic.c
+ */
+#include "mcu/MK64F12.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif

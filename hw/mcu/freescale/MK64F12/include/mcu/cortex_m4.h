@@ -20,6 +20,12 @@
 #ifndef __MCU_CORTEX_M4_H__
 #define __MCU_CORTEX_M4_H__
 
+/*
+ * include board definition file here so that
+ * SCB register can be defined for os_fault.c
+ */
+#include "mcu/MK64F12.h"
+
 #define OS_TICKS_PER_SEC	(1000)
 
 #endif /* __MCU_CORTEX_M4_H__ */
