@@ -22,7 +22,10 @@
 #include "mcu/fsl_device_registers.h"
 #include "mcu/frdm-k64f_bsp.h"
 #include "mcu/fsl_common.h"
+#include "mcu/fsl_clock.h"
 #include "mcu/fsl_port.h"
+
+#include "clock_config.h"
 
 void *_sbrk(int incr);
 void _close(int fd);
@@ -85,6 +88,8 @@ void BOARD_InitPins(void)
     PORT_SetPinMux(PORTB, 22U, kPORT_MuxAsGpio);
 }
 
+extern void BOARD_BootClockRUN(void);
+
 void
 os_bsp_init(void)
 {
@@ -92,6 +97,7 @@ os_bsp_init(void)
     init_hardware();
 
     BOARD_InitPins();
+    BOARD_BootClockRUN();
 
     /*
      * XXX these references are here to keep the functions in for libc to find.
