@@ -20,6 +20,8 @@
 #include <stdio.h>
 #include <hal/flash_map.h>
 
+#include "bsp/cmsis_nvic.h"
+
 #include "mcu/fsl_device_registers.h"
 #include "mcu/frdm-k64f_bsp.h"
 #include "mcu/fsl_common.h"
@@ -111,6 +113,10 @@ void BOARD_InitDebugConsole(void)
 
 extern void BOARD_BootClockRUN(void);
 
+extern uint32_t UART0_LON_IRQHandler;
+extern uint32_t UART0_RX_TX_IRQHandler;
+extern uint32_t UART0_ERR_IRQHandler;
+
 void
 os_bsp_init(void)
 {
@@ -119,6 +125,11 @@ os_bsp_init(void)
 
     BOARD_InitPins();
     BOARD_BootClockRUN();
+
+    /* The ISR Handlers are cleared out by default.  Let's re-setup the UART0 Handlers */
+    NVIC_SetVector(UART0_LON_IRQn, (uint32_t)UART0_LON_IRQHandler);
+    NVIC_SetVector(UART0_RX_TX_IRQn, (uint32_t)UART0_RX_TX_IRQHandler);
+    NVIC_SetVector(UART0_ERR_IRQn, (uint32_t)UART0_ERR_IRQHandler);
     BOARD_InitDebugConsole();
 
     DEBUG_PRINTF("%s: POST BOARD_InitDebugConsole\r\n", __func__);
