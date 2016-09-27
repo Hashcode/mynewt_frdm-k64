@@ -326,7 +326,11 @@ Reset_Handler:
     cpsid   i               /* Mask interrupts */
     .equ    VTOR, 0xE000ED08
     ldr     r0, =VTOR
+#ifdef USE_RAM_VECTOR_TABLE
+    ldr     r1, =__interrupts_ram_start__
+#else
     ldr     r1, =__isr_vector
+#endif
     str     r1, [r0]
 #ifndef __NO_SYSTEM_INIT
     ldr   r0,=SystemInit
