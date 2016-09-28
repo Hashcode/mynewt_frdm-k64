@@ -38,7 +38,7 @@ echo "Debugging" $FILE_NAME
 # Exit openocd when gdb detaches.
 #
 set -m
-openocd -f board/frdm-k64.cfg -c "gdb_port 3333; telnet_port 4444; stm32f3x.cpu configure -event gdb-detach {shutdown}" -c init -c "reset halt" &
+pyocd-gdbserver &
 set +m
 
 echo "target remote localhost:3333" > $GDB_CMD_FILE

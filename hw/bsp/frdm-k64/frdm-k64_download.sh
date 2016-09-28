@@ -29,7 +29,6 @@ if [ $# -lt 2 ]; then
     exit 1
 fi
 
-CFGPATH=$1
 BASENAME=$2
 IS_BOOTLOADER=0
 
@@ -53,5 +52,4 @@ fi
 
 echo "Downloading" $FILE_NAME "to" $FLASH_OFFSET
 
-openocd -f $CFGPATH/frdm-k64.cfg -c init -c "reset halt" -c "flash write_image erase $FILE_NAME $FLASH_OFFSET" -c "reset run" -c shutdown
-
+pyocd-flashtool --address $FLASH_OFFSET $FILE_NAME
