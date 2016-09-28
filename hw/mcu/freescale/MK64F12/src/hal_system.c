@@ -34,3 +34,8 @@ system_reset(void)
     }
 }
 
+int
+system_debugger_connected(void)
+{
+    return CoreDebug->DHCSR & CoreDebug_DHCSR_C_DEBUGEN_Msk;
+}
