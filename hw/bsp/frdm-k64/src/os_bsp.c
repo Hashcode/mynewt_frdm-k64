@@ -118,7 +118,7 @@ extern uint32_t UART0_RX_TX_IRQHandler;
 extern uint32_t UART0_ERR_IRQHandler;
 
 void
-os_bsp_init(void)
+bsp_init(void)
 {
     // Init pinmux and other hardware setup.
     init_hardware();
