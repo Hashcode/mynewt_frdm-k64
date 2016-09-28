@@ -21,6 +21,8 @@
 #include <inttypes.h>
 #include <mcu/cortex_m4.h>
 
+#include "mcu/fsl_debug_console.h"
+
 /**
  * Boots the image described by the supplied image header.
  *
@@ -29,20 +31,29 @@
 void
 system_start(void *img_start)
 {
-    typedef void jump_fn(void);
+DEBUG_PRINTF("%s: ENTER img_start=0x%08x, Reset_Handler=0x%08x\r\n", __func__, (uint32_t)img_start, *(uint32_t *)(img_start + 4));
 
-    uint32_t base0entry;
-    uint32_t jump_addr;
-    jump_fn *fn;
+    /* Turn off interrupts. */
+    __disable_irq();
+
+    /* Set the VTOR to default. */
+    SCB->VTOR = 0;
+
+    // Memory barriers for good measure.
+    __ISB();
+    __DSB();
 
     /* First word contains initial MSP value. */
     __set_MSP(*(uint32_t *)img_start);
+    __set_PSP(*(uint32_t *)img_start);
 
     /* Second word contains address of entry point (Reset_Handler). */
-    base0entry = *(uint32_t *)(img_start + 4);
-    jump_addr = base0entry;
-    fn = (jump_fn *)jump_addr;
+    void (*entry)(void) = (void (*)(void))*(uint32_t *)(img_start + 4);
 
     /* Jump to image. */
-    fn();
+    entry();
+
+    /* Should never reach this point */
+    while (1)
+        ;
 }
