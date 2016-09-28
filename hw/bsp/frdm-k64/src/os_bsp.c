@@ -96,9 +96,9 @@ static void init_hardware(void)
 void BOARD_InitPins(void)
 {
     /* Debug uart port mux config */
-    CLOCK_EnableClock(kCLOCK_PortD);
-    PORT_SetPinMux(PORTD, 6U, kPORT_MuxAlt5);
-    PORT_SetPinMux(PORTD, 7U, kPORT_MuxAlt3);
+    CLOCK_EnableClock(kCLOCK_PortB);
+    PORT_SetPinMux(PORTB, 16U, kPORT_MuxAlt3);
+    PORT_SetPinMux(PORTB, 17U, kPORT_MuxAlt3);
 
     /* Led pin mux Configuration */
     PORT_SetPinMux(PORTB, 22U, kPORT_MuxAsGpio);
